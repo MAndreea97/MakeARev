@@ -1,0 +1,5 @@
+- create product
+- create review
+- category details 
+- brand details
+- product details
