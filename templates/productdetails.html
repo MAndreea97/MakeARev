@@ -10,11 +10,10 @@
                 <img src="{{ product.image.url }}" alt="product image" class="col-12">
             </div>
             <div class="col-lg-6 col-12">
-                <p>{{ product.title }}</p>
-                {#    <p><a href="{% url 'brand-details' product.brand.pk %}">{{ product.brand }}</a></p>#}
-                <p>{{ product.category }}</p>
-                Main review
-            </div>
+                <p>{{ product.name }}</p>
+                <p><a href="{% url 'category_details' product.category.pk %}"> {{ product.category }} </a></p>
+                By<p><a href="{% url 'brand_details' product.brand.pk %}">{{ product.brand }}</a></p>
+{#                Main review#}
         </div>
         <div class="col-12">
             <form action="{% url 'review_create' %}?product={{ product.id }}" method="post">
@@ -33,7 +32,12 @@
                     {% include 'partials/stars.html' with grade=review.grade %}
                 </div>
                 <div>
-                    {{ review.text }}
+                    <p>
+                         {{ review.text }}
+                    </p>
+                    <p>
+                        {{ review.date }}
+                    </p>
                 </div>
             {% endfor %}
 

@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
+from django.utils import timezone
 
 
 class CustomUser(AbstractUser):
@@ -38,6 +39,7 @@ class Review(models.Model):
     grade = models.IntegerField()
     user = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    date = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
         return f"{self.product} {self.grade}"

@@ -26,12 +26,12 @@ class ReviewForm(forms.ModelForm):
     class Meta:
         model = Review
         fields = '__all__'
-        exclude = ['user', 'review_date']
+        exclude = ['user', 'date']
         widgets = {
             # 'product': forms.HiddenInput(),
             'grade': forms.NumberInput(attrs={'class': 'form-control'}),
-            'text': forms.Textarea(attrs={'class': 'form-control'})
-
+            'text': forms.Textarea(attrs={'class': 'form-control'}),
+            'product':forms.HiddenInput(),
         }
 
 
