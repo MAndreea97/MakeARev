@@ -29,9 +29,9 @@ class ReviewForm(forms.ModelForm):
         exclude = ['user', 'date']
         widgets = {
             # 'product': forms.HiddenInput(),
-            'grade': forms.NumberInput(attrs={'class': 'form-control'}),
+            'grade': forms.NumberInput(attrs={'class': 'form-control', 'min': 1, 'max': 5}),
             'text': forms.Textarea(attrs={'class': 'form-control'}),
-            'product':forms.HiddenInput(),
+            'product': forms.HiddenInput(),
         }
 
 
@@ -101,7 +101,6 @@ class PasswordSetForm(SetPasswordForm):
         super().__init__(*args, **kwargs)
         self.fields['new_password1'].widget.attrs.update({'class': 'form-control'})
         self.fields['new_password2'].widget.attrs.update({'class': 'form-control'})
-
 
 # class ContactForm(forms.ModelForm):
 #     class Meta:

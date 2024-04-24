@@ -4,11 +4,8 @@
 
 {% block content %}
     <div>
-        <h1>Welcome to our review page!</h1>
-        <p>{{ object.title }}</p>
-        <p>{{ object.better_title }}</p>
-        <p>{{ dictionary.key }}</p>
-        <p>{{ dictionary.key2 }}</p>
-        <p>{{ list.0 }}</p>
+        {% include 'partials/name_and_product_block.html' with products=latest_products title='Latest products' %}
+        {% include 'partials/name_and_product_block.html' with products=popular_products title='Best reviewed products' %}
+        {% include 'partials/name_and_product_block.html' with products=least_popular_products title='Worst reviewed products' %}
     </div>
 {% endblock %}

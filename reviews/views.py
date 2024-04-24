@@ -8,7 +8,21 @@ from reviews.models import Product, Brand, Category, Review, CustomUser
 
 
 def homepage_view(request):
-    return render(request, 'home.html', {})
+    all_products = Product.objects.order_by('-id')
+    latest_products = all_products[:min(6, all_products.count())]
+
+    products = Product.objects.all()
+    products = list(filter(lambda product: product.average_rating() is not None, products))
+    products.sort(key=lambda product: product.average_rating(), reverse=True)
+    popular_products = products
+
+    products = Product.objects.all()
+    products = list(filter(lambda product: product.average_rating() is not None, products))
+    products.sort(key=lambda product: product.average_rating())
+    least_popular_products = products
+
+    return render(request, 'home.html', {'latest_products': latest_products, 'popular_products': popular_products,
+                                         'least_popular_products': least_popular_products})
 
 
 class IsSuperUserMixin(UserPassesTestMixin):
