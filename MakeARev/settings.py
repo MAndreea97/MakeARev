@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 import os
 from pathlib import Path
 
+from django.urls import reverse_lazy
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -24,7 +26,11 @@ SECRET_KEY = 'django-insecure-mrl8#_h(#tg587hot(ojhb$o4@cewsnh81$z&6b@1uhcr_1rnj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'makearev.pythonanywhere.com',
+    'localhost',
+    '127.0.0.1',
+]
 
 # Application definition
 
@@ -135,3 +141,6 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 AUTH_USER_MODEL = 'reviews.CustomUser'
+
+LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGOUT_REDIRECT_URL = reverse_lazy('login')

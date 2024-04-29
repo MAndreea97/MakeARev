@@ -15,9 +15,9 @@ class ProductForm(forms.ModelForm):
 
             'name': forms.TextInput(attrs={'class': 'form-control'}),
             'brand': forms.Select(attrs={'class': 'form-select'}),
-            'description': forms.Textarea(attrs={'class': 'form-control'}),
-            'category': forms.CheckboxSelectMultiple(attrs={}),
-            'review_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            # 'description': forms.Textarea(attrs={'class': 'form-control'}),
+            'category': forms.Select(attrs={'class': 'form-select'}),
+            # 'review_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
             'image': forms.FileInput(attrs={'class': 'form-control'}),
         }
 

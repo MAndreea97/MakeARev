@@ -1,4 +1,5 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.db.models import Q
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, ListView
@@ -37,7 +38,8 @@ class ProductListView(ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        # context['genres'] = Genre.objects.all()
+        q = self.request.GET.get('q', '')
+        context[self.context_object_name] = Product.objects.filter(Q(name__icontains=q) | Q(brand__name__icontains=q))
         return context
 
 
